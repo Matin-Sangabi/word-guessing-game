@@ -1,3 +1,5 @@
+import ModalsChild from "@/components/modal/modal";
+import Modals from "@/components/modal/modalChild";
 import StartGame from "@/components/startButton";
 import { useState } from "react";
 
@@ -14,9 +16,20 @@ const HomePage = () => {
   const startGameHandleClick = () => {
     setModal(true);
   };
-
+  const closeModalHandler = () => {
+    setModal(false);
+    setRandValue({ value: "", index: " ", mode: "" });
+  };
+  const modalClickHandler = () => {
+  };
   return (
     <main className="mian">
+      {/* Modal */}
+      {modal && (
+        <Modals onClose={closeModalHandler}>
+          <ModalsChild onMode={modalClickHandler} />
+        </Modals>
+      )}
       {/* Start Game Button */}
       <StartGame
         disabled={modal || randValue.value.length}
