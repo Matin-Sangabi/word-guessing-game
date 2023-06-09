@@ -1,3 +1,4 @@
+import GeuessList from "@/components/guesses/guessList";
 import GuessWord from "@/components/guesses/guessWord";
 import ModalsChild from "@/components/modal/modal";
 import Modals from "@/components/modal/modalChild";
@@ -10,12 +11,13 @@ const HomePage = () => {
   // states
   const [modal, setModal] = useState(false);
   const [selectValue, setSelectValue] = useState("");
+  const [guessValue, setGuessValue] = useState("");
   const [randValue, setRandValue] = useState({
     value: "",
     index: "",
     mode: "",
   });
-  const [guessValue, setGuessValue] = useState("");
+  const [choose, setChoose] = useState([]);
   //functional handle
 
   /// start and close game funcction
@@ -45,7 +47,10 @@ const HomePage = () => {
     setGuessValue(target.value.toUpperCase());
   };
 
-  const guessClickHandler = () => {};
+  const guessClickHandler = () => {
+    const {mode ,value , index} = randValue;
+    
+  };
 
   return (
     <main className="mian">
@@ -68,6 +73,7 @@ const HomePage = () => {
             onChange={guessChangeHandler}
             onCloseGame={closeGameHandler}
           />
+          <GeuessList choose={choose} value={randValue.value} />
         </>
       )}
     </main>
