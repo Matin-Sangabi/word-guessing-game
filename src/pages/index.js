@@ -48,8 +48,11 @@ const HomePage = () => {
   };
 
   const guessClickHandler = () => {
-    const {mode ,value , index} = randValue;
-    
+    const { mode, value, index } = randValue;
+    if (guessValue === value) {
+      setRandValue({ value: "", index: "", mode: "" });
+      setChoose([]);
+    }
   };
 
   return (
