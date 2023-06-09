@@ -2,6 +2,7 @@ import ModalsChild from "@/components/modal/modal";
 import Modals from "@/components/modal/modalChild";
 import StartGame from "@/components/startButton";
 import { selectRandomData } from "@/utils/randomDataSelect";
+import randomValue, { getRandomValue } from "@/utils/randomValue";
 import { useState } from "react";
 
 const HomePage = () => {
@@ -15,16 +16,22 @@ const HomePage = () => {
   });
 
   //functional handle
+  /// start game funcction
   const startGameHandleClick = () => {
     setModal(true);
     const randomValue = selectRandomData();
     setSelectValue(randomValue);
   };
+  /// modal function
   const closeModalHandler = () => {
     setModal(false);
     setRandValue({ value: "", index: " ", mode: "" });
   };
-  const modalClickHandler = () => {};
+  const modalClickHandler = ({ target }) => {
+    const { index, value, mode } = getRandomValue(selectValue, target.value);
+    setRandValue({ value, index, mode });
+    setModal(false);
+  };
   return (
     <main className="mian">
       {/* Modal */}
