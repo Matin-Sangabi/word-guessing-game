@@ -79,3 +79,30 @@ main {
   align-items: center;
   gap: 1rem;
 }
+.guess {
+  margin: 3rem auto;
+}
+.guess-form {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 50%;
+}
+.guess-input {
+  border: none;
+  outline: none;
+  padding: 0.5rem 1rem ;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  width: 10rem;
+  align-items: center;
+}
+.cancel{
+  padding: 0.5rem ;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 10px;
+  background-color: #fff;
+  border: 1px solid var(--primary-color);
+}

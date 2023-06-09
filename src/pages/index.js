@@ -1,8 +1,9 @@
+import GuessWord from "@/components/guesses/guessWord";
 import ModalsChild from "@/components/modal/modal";
 import Modals from "@/components/modal/modalChild";
 import StartGame from "@/components/startButton";
 import { selectRandomData } from "@/utils/randomDataSelect";
-import randomValue, { getRandomValue } from "@/utils/randomValue";
+import { getRandomValue } from "@/utils/randomValue";
 import { useState } from "react";
 
 const HomePage = () => {
@@ -14,13 +15,19 @@ const HomePage = () => {
     index: "",
     mode: "",
   });
-
+  const [guessValue, setGuessValue] = useState("");
   //functional handle
-  /// start game funcction
+
+  /// start and close game funcction
   const startGameHandleClick = () => {
     setModal(true);
     const randomValue = selectRandomData();
     setSelectValue(randomValue);
+  };
+  const closeGameHandler = () => {
+    setModal(false);
+    setGuessValue("");
+    setRandValue({ value: "", index: "", mode: "" });
   };
   /// modal function
   const closeModalHandler = () => {
@@ -32,6 +39,14 @@ const HomePage = () => {
     setRandValue({ value, index, mode });
     setModal(false);
   };
+
+  /// guesses functional
+  const guessChangeHandler = ({ target }) => {
+    setGuessValue(target.value.toUpperCase());
+  };
+
+  const guessClickHandler = () => {};
+
   return (
     <main className="mian">
       {/* Modal */}
@@ -45,6 +60,16 @@ const HomePage = () => {
         disabled={modal || randValue.value.length}
         onClick={startGameHandleClick}
       />
+      {randValue.value.length !== 0 && (
+        <>
+          <GuessWord
+            value={guessValue}
+            onGuess={guessClickHandler}
+            onChange={guessChangeHandler}
+            onCloseGame={closeGameHandler}
+          />
+        </>
+      )}
     </main>
   );
 };
