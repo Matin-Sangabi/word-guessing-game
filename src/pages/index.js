@@ -1,4 +1,5 @@
 import StartGame from "@/components/startButton";
+import { useState } from "react";
 
 const HomePage = () => {
   // states
@@ -8,18 +9,20 @@ const HomePage = () => {
     index: "",
     mode: "",
   });
-  
 
-
+  //functional handle
+  const startGameHandleClick = () => {
+    setModal(true);
+  };
 
   return (
-    <div className="mian">
+    <main className="mian">
       {/* Start Game Button */}
       <StartGame
         disabled={modal || randValue.value.length}
         onClick={startGameHandleClick}
       />
-    </div>
+    </main>
   );
 };
 
