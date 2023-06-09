@@ -1,12 +1,12 @@
-// import { commonString } from "@/utils/commonString";
+import { commonString } from "@/utils/commonString";
 
 const GeuessList = ({ choose, value }) => {
   return (
     <ul>
       {choose.map((item, index) => (
         <li key={index}>
-          {/* <span>User : {commonString(item.user, value)}</span> */}
-          <span>Robot : {item.robot}</span>
+          <span>User : {commonShareLetters(item.user, value)}</span>
+          <span>Robot : {commonShareLetters(item.robot, value)}</span>
         </li>
       ))}
     </ul>
@@ -14,3 +14,9 @@ const GeuessList = ({ choose, value }) => {
 };
 
 export default GeuessList;
+
+function commonShareLetters(item, value) {
+  return commonString(item, value).map((item, i) => {
+    return <span key={i}>{item}</span>;
+  });
+}
