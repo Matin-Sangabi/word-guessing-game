@@ -27,3 +27,19 @@ main {
   flex-direction: column;
   align-items: center;
 }
+.start-game-btn,
+.btn {
+  border-radius: 10px;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 0.5rem;
+  font-size: 16px;
+}
+.start-game-btn:focus {
+  box-shadow: 2px 1px 10px rgba(0, 0, 0, 0.5);
+}
+.start-game-btn:disabled {
+  background-color: var(--disable-color);
+  color: var(--dark-color);
+  cursor: auto;
+}
