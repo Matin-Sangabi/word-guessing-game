@@ -52,7 +52,6 @@ const HomePage = () => {
   const guessClickHandler = () => {
     const { mode, value, index } = randValue;
     setGuessValue("");
-    console.log(value);
     if (guessValue === value) {
       toast.success("you won !");
       resetState();
@@ -67,7 +66,7 @@ const HomePage = () => {
         break;
       }
       case HARD_MODE: {
-        robotSelectData(index, 2, value, guessValue);
+        robotSelectData(index, 4, value, guessValue);
         break;
       }
     }
